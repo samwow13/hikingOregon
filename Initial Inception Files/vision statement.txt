@@ -1,0 +1,13 @@
+Vision Statement 1.0
+________________________________________________________________
+
+For people who want to know great Northwest Oregon Hiking 
+destinations and their proximity.  Our hiking application is 
+an application that makes it easy to see not only how close, 
+but what type of hike it is based of difficulty and description 
+for instance.  This application gives anyone with an Android 
+device the ability to quickly and easily find local hikes to 
+try either solo or with friends. The play store currently does 
+not fill this very well, that is where this application takes 
+over.  Northwest Oregon Hiking will have an intuitive and simple 
+design to make it a better experience for the end user.
