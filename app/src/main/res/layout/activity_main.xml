@@ -34,15 +34,12 @@
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="62dp"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="19dp"
-        android:layout_marginTop="64dp"
         android:text="Length"
-        app:layout_constraintBottom_toBottomOf="@+id/button_add"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editText_length"
         app:layout_constraintEnd_toStartOf="@+id/editText_length"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editText_hike"
@@ -70,10 +67,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:layout_marginTop="18dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_description" />
 
     <Button
         android:id="@+id/button_add"
@@ -81,11 +79,10 @@
         android:layout_height="40dp"
         android:layout_marginEnd="21dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="197dp"
         android:text="Add Hike"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_view"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -100,5 +97,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="16dp" />
+
+    <Button
+        android:id="@+id/button_view"
+        android:layout_width="112dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="11dp"
+        android:text="View Data"
+        app:layout_constraintStart_toEndOf="@+id/button_add"
+        app:layout_constraintTop_toBottomOf="@+id/editText_length" />
 
 </android.support.constraint.ConstraintLayout>
