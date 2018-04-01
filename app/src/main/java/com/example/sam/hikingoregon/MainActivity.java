@@ -1,5 +1,6 @@
 package com.example.sam.hikingoregon;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void goToList(View view) {
+        Intent intent = new Intent(this, ListActivity.class);
+        startActivity(intent);
+    }
 
+    public void goToSearch(View view) {
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
+    }
 
-
+    public void goToRandomHike(View view) {
+        Intent intent = new Intent(this, RandomHikeActivity.class);
+        startActivity(intent);
+    }
 }

@@ -57,19 +57,22 @@
             android:layout_height="wrap_content"
             android:text="List Hikes"
             android:padding="3dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:onClick="goToList"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Search"
             android:padding="3dp"
+            android:onClick="goToSearch"
             android:layout_weight="1"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Random Hike"
+            android:onClick="goToRandomHike"
             android:padding="3dp"
             android:layout_weight="1"/>
 
