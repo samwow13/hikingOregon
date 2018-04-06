@@ -23,24 +23,19 @@
         android:textSize="22sp" />
 
 
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
 
-
          <Button
-
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Random Hike"
-             android:padding="3dp"
-             android:layout_gravity="center"
-             android:onClick="generateRandom"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Random Hike"
+            android:padding="3dp"
+            android:layout_gravity="center"
+            android:onClick="generateRandom"/>
 
          <Button
             android:layout_width="wrap_content"
@@ -49,6 +44,7 @@
             android:padding="3dp"
             android:layout_gravity="center"
             android:onClick="clearPage"/>
+
     </LinearLayout>
 
     <GridLayout
@@ -66,8 +62,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="32sp"
-        android:layout_gravity="center|top"
-        />
+        android:layout_gravity="center|top" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,16 +75,14 @@
             android:padding="3dp"
             android:layout_gravity="left"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/hikeLocation"
             android:padding="3dp"
             android:layout_gravity="right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
@@ -107,16 +100,14 @@
             android:padding="3dp"
             android:layout_gravity="left"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/hikeSummary"
             android:padding="3dp"
             android:layout_gravity="right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
@@ -131,16 +122,14 @@
             android:padding="3dp"
             android:layout_gravity="left"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/hikeLength"
             android:padding="3dp"
             android:layout_gravity="right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
@@ -155,16 +144,14 @@
             android:padding="3dp"
             android:layout_gravity="left"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/hikeStars"
             android:padding="3dp"
             android:layout_gravity="right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
@@ -179,16 +166,15 @@
             android:padding="3dp"
             android:layout_gravity="left"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/hikeDifficulty"
             android:padding="3dp"
             android:layout_gravity="right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -202,16 +188,14 @@
             android:padding="3dp"
             android:layout_gravity="left"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/hikeHighElevation"
             android:padding="3dp"
             android:layout_gravity="right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
@@ -226,16 +210,14 @@
             android:padding="3dp"
             android:layout_gravity="left"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/hikeLowElevation"
             android:padding="3dp"
             android:layout_gravity="right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

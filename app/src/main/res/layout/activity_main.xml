@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
@@ -76,7 +75,6 @@
             android:padding="3dp"
             android:layout_weight="1"/>
 
-
     </LinearLayout>
 
 
@@ -84,91 +82,5 @@
 </LinearLayout>
 
 
-<!-- <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="4dp"
-        android:scaleType="fitStart"
-        android:src="@drawable/hikeoregon" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Hiking Oregon"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="30sp" />
-
-
-   <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:foregroundGravity="top"
-        >
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="4dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/hikeoregon" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Hiking Oregon"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="30sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="690px"
-            android:text="Created By: Sam Wetzel"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="800px"
-            android:text="For CS462"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="900px"
-            android:text="Hiking Oregon was built to give local Oregonians a place to check out nearby trailheads and hikes. Users can rate, comment, or just find out new and interesting things about potential hikes!"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="950dp"
-            android:text="button"/>
-
-
-    </FrameLayout>
-
-
-
-
-
-
-</LinearLayout> -->
 
