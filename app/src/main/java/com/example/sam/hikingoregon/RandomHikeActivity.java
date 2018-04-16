@@ -35,7 +35,7 @@ public class RandomHikeActivity extends SimpleActivity {
 
         Ion.with(this)
                 //this url takes in method parameters, you can check the api for more details.
-                .load("https://www.hikingproject.com/data/get-trails?lat=44.9429&lon=-123.0351&maxDistance=50&maxResults=20&key=200232475-fb4ba0aa94a3bc700c5cb0b8eb6a9e6e")
+                .load("https://www.hikingproject.com/data/get-trails?lat=44.9429&lon=-123.0351&maxDistance=40&maxResults=30&key=200232475-fb4ba0aa94a3bc700c5cb0b8eb6a9e6e")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
@@ -43,7 +43,7 @@ public class RandomHikeActivity extends SimpleActivity {
                         try{
                            //Random number creation to grab a random item from the array
                            Random rand = new Random();
-                           int value = rand.nextInt(20);
+                           int value = rand.nextInt(30);
 
                            JSONObject json = new JSONObject(result); // retrieves the object from input
                            JSONArray trails = json.getJSONArray("trails"); // gets the array of trails
@@ -59,8 +59,13 @@ public class RandomHikeActivity extends SimpleActivity {
                            String highElevation = one.getString("high");
                            String lowElevation = one.getString("low");
 
-                           String image = one.getString("imgMedium"); // gets the image
-                           loadImage(image); // loads image with method
+                           String image = one.optString("imgMedium");// gets the image
+                           loadImage(image);
+
+
+
+
+
 
                             //sets textviews to proper inputs
                            $TV(R.id.hikeName).setText(name);
@@ -71,6 +76,7 @@ public class RandomHikeActivity extends SimpleActivity {
                            $TV(R.id.hikeDifficulty).setText(difficulty);
                            $TV(R.id.hikeHighElevation).setText(highElevation);
                            $TV(R.id.hikeLowElevation).setText(lowElevation);
+
                         }
                         catch (JSONException jsone) {
                             Log.wtf("help", jsone);
@@ -82,20 +88,36 @@ public class RandomHikeActivity extends SimpleActivity {
     /*
     Method that takes in a url and programmatically exports the image given to a certain location within the random hike.
      */
-    public void loadImage(String url){
-        ImageView imgView = new ImageView(this);
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        );
-        imgView.setLayoutParams(params);
-        GridLayout grid = $(R.id.grid);
-        grid.addView(imgView);
+    public void loadImage(String url) {
 
-        Picasso.with(this)
-                .load(url)
-                .into(imgView);
-    }
+
+        if(url.isEmpty()) {
+            ImageView imgView = new ImageView(this);
+            url = "https://dummyimage.com/600x400/000/fff";
+            Picasso.with(this)
+                    .load(url)
+                    .into(imgView);
+            //Intent intent = new Intent(this, RandomHikeActivity.class);
+            //startActivity(intent);
+        } else {
+            ImageView imgView = new ImageView(this);
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            );
+            imgView.setLayoutParams(params);
+            GridLayout grid = $(R.id.grid);
+            grid.addView(imgView);
+
+            Picasso.with(this)
+                    .load(url)
+                    .into(imgView);
+        }
+
+        }
+
+
+
 
     /*
     Method that just reloads the page from scratch.
