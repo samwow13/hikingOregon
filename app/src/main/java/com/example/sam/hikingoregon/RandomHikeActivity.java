@@ -47,35 +47,31 @@ public class RandomHikeActivity extends SimpleActivity {
 
                            JSONObject json = new JSONObject(result); // retrieves the object from input
                            JSONArray trails = json.getJSONArray("trails"); // gets the array of trails
+
                            JSONObject one = trails.getJSONObject(value);// gets the object at value of trail array
 
-                            //returns data for each of the following
-                           String summary = one.getString("summary");
-                           String name = one.getString("name");
-                           String length = one.getString("length");
-                           String stars = one.getString("stars");
-                           String difficulty = one.getString("difficulty");
-                           String location = one.getString("location");
-                           String highElevation = one.getString("high");
-                           String lowElevation = one.getString("low");
+                                //returns data for each of the following
+                                String summary = one.getString("summary");
+                                String name = one.getString("name");
+                                String length = one.getString("length");
+                                String stars = one.getString("stars");
+                                String difficulty = one.getString("difficulty");
+                                String location = one.getString("location");
+                                String highElevation = one.getString("high");
+                                String lowElevation = one.getString("low");
 
-                           String image = one.optString("imgMedium");// gets the image
-                           loadImage(image);
+                                String image = one.optString("imgMedium");// gets the image
+                                loadImage(image);
 
-
-
-
-
-
-                            //sets textviews to proper inputs
-                           $TV(R.id.hikeName).setText(name);
-                           $TV(R.id.hikeLocation).setText(location);
-                           $TV(R.id.hikeSummary).setText(summary);
-                           $TV(R.id.hikeLength).setText(length);
-                           $TV(R.id.hikeStars).setText(stars);
-                           $TV(R.id.hikeDifficulty).setText(difficulty);
-                           $TV(R.id.hikeHighElevation).setText(highElevation);
-                           $TV(R.id.hikeLowElevation).setText(lowElevation);
+                                //sets textviews to proper inputs
+                                $TV(R.id.hikeName).setText(name);
+                                $TV(R.id.hikeLocation).setText(location);
+                                $TV(R.id.hikeSummary).setText(summary);
+                                $TV(R.id.hikeLength).setText(length);
+                                $TV(R.id.hikeStars).setText(stars);
+                                $TV(R.id.hikeDifficulty).setText(difficulty);
+                                $TV(R.id.hikeHighElevation).setText(highElevation);
+                                $TV(R.id.hikeLowElevation).setText(lowElevation);
 
                         }
                         catch (JSONException jsone) {
@@ -85,6 +81,9 @@ public class RandomHikeActivity extends SimpleActivity {
                 });
     }
 
+
+
+
     /*
     Method that takes in a url and programmatically exports the image given to a certain location within the random hike.
      */
@@ -92,11 +91,8 @@ public class RandomHikeActivity extends SimpleActivity {
 
 
         if(url.isEmpty()) {
-            ImageView imgView = new ImageView(this);
-            url = "https://dummyimage.com/600x400/000/fff";
-            Picasso.with(this)
-                    .load(url)
-                    .into(imgView);
+            GridLayout grid = $(R.id.grid);
+            grid.removeAllViews();
             //Intent intent = new Intent(this, RandomHikeActivity.class);
             //startActivity(intent);
         } else {
