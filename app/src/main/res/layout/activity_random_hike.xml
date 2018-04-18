@@ -48,7 +48,13 @@
 
     </LinearLayout>
 
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/grid"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
+    </GridLayout>
 
 
     <TextView
@@ -216,13 +222,7 @@
 
     </LinearLayout>
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:id="@+id/grid"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
 
-    </GridLayout>
 
 
 </LinearLayout>

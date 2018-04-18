@@ -61,6 +61,10 @@ public class RandomHikeActivity extends SimpleActivity {
                                 String lowElevation = one.getString("low");
 
                                 String image = one.optString("imgMedium");// gets the image
+                                if(image.isEmpty()){
+                                    image = "https://dummyimage.com/600x400/000/fff&text=No+Image+Exists";
+                                }
+
                                 loadImage(image);
 
                                 //sets textviews to proper inputs
@@ -97,6 +101,7 @@ public class RandomHikeActivity extends SimpleActivity {
             //startActivity(intent);
         } else {
             ImageView imgView = new ImageView(this);
+
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
