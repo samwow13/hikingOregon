@@ -1,5 +1,9 @@
 package com.example.sam.hikingoregon;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +25,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Random;
 
 import stanford.androidlib.SimpleActivity;
@@ -29,6 +36,8 @@ public class ListActivity extends SimpleActivity {
 
     int inputLength, textInStars;
 
+
+
     EditText stars;
     EditText minLength;
 
@@ -36,8 +45,6 @@ public class ListActivity extends SimpleActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
-
 
     }
 
@@ -63,22 +70,18 @@ public class ListActivity extends SimpleActivity {
                     @Override
                     public void onCompleted(Exception e, String result) {
                         try {
-                            //Random number creation to grab a random item from the array
-                            Random rand = new Random();
-                            int value = rand.nextInt(30);
+
 
                             JSONObject json = new JSONObject(result); // retrieves the object from input
                             JSONArray trails = json.getJSONArray("trails"); // gets the array of trails
 
-                            JSONObject one = trails.getJSONObject(value);// gets the object at value of trail array
+                            JSONObject one = trails.getJSONObject(0);// gets the object at value of trail array
 
                             //returns data for each of the following
-                            String summary = one.getString("summary");
+
                             String name = one.getString("name");
                             String length = one.getString("length");
-                            String stars = one.getString("stars");
-                            String difficulty = one.getString("difficulty");
-                            String location = one.getString("location");
+
                             String highElevation = one.getString("high");
                             String lowElevation = one.getString("low");
                             int high = Integer.parseInt(highElevation);
@@ -94,30 +97,37 @@ public class ListActivity extends SimpleActivity {
 
                             //sets textviews to proper inputs
                             $TV(R.id.hikeListName).setText(name);
-                            //$TV(R.id.hikeLocation).setText(location);
-                            //$TV(R.id.hikeSummary).setText(summary);
                             $TV(R.id.hikeListLength).setText(length);
-                            //$TV(R.id.hikeStars).setText(stars);
-                            //$TV(R.id.hikeDifficulty).setText(difficulty);
                             $TV(R.id.hikeHighElevation).setText(gain);
-                            //$TV(R.id.hikeLowElevation).setText(lowElevation);
-
-                            LinearLayout layout = (LinearLayout) findViewById(R.id.activityList);
-
-                            View list = getLayoutInflater().inflate(R.layout.list, layout);
-
-                            GridLayout img = list.findViewById(R.id.listForGrid);// loads the first image still
-                            loadImage2(image);
 
 
-                            TextView tvHikeName = (TextView) list.findViewById(R.id.listHikeName);
-                            tvHikeName.setText(name);
 
-                            TextView tvHikeLength = (TextView) list.findViewById(R.id.listHikeLength);
-                            tvHikeLength.setText(length);
+                            LinearLayout layout = (LinearLayout) findViewById(R.id.activityList);// where we add the dynamic layout
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                                    ViewGroup.LayoutParams.WRAP_CONTENT
+                            );
 
-                            TextView tvElevationGain = (TextView) list.findViewById(R.id.listElevationGain);
-                            tvElevationGain.setText(gain);
+
+                            for(int i = 1; i < trails.length() - 1;i++){
+                                JSONObject x = trails.getJSONObject(i);
+                                String hikeName = x.getString("name");
+                                String hikeLength = x.getString("length");
+                                String imagez = x.optString("imgSmall");
+
+                                String h = x.getString("high");
+                                    String l = x.getString("low");
+                                    int highz = Integer.parseInt(h);
+                                    int lowz = Integer.parseInt(l);
+                                    int elevationGainz = highz - lowz;
+                                    String gainz = Integer.toString(elevationGainz);
+
+                                try {
+                                    addList(imagez, hikeName, hikeLength, gainz, layout);
+                                } catch (IOException e1) {
+                                    e1.printStackTrace();
+                                }
+                            }
 
                         } catch (JSONException jsone) {
                             Log.wtf("help", jsone);
@@ -127,18 +137,37 @@ public class ListActivity extends SimpleActivity {
 
     }
 
+    public void addList(String image, String hikeName, String hikeLength, String gains, LinearLayout layout) throws IOException {
+        View list = getLayoutInflater().inflate(R.layout.list, null);
+
+        ImageView img = (ImageView) list.findViewById(R.id.listImage);
+        URL url = new URL(image);
+        Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+//        Picasso.with(context)
+//                .load(image)
+//                .resize(200, 200)
+//                .into(img);
+
+
+        img.setImageBitmap(bmp);
+
+
+        TextView tvHikeName = (TextView) list.findViewById(R.id.listHikeName);
+        tvHikeName.setText(hikeName);
+
+        TextView tvHikeLength = (TextView) list.findViewById(R.id.listHikeLength);
+        tvHikeLength.setText(hikeLength);
+
+        TextView tvHikeGainz = (TextView) list.findViewById(R.id.listElevationGain);
+        tvHikeGainz.setText(gains);
+
+        layout.addView(list);
+    }
+
             /*
     Method that takes in a url and programmatically exports the image given to a certain location within the random hike.
      */
     public void loadImage(String url) {
-
-
-        if(url.isEmpty()) {
-            GridLayout grid = $(R.id.gridList);
-            grid.removeAllViews();
-            //Intent intent = new Intent(this, RandomHikeActivity.class);
-            //startActivity(intent);
-        } else {
             ImageView imgView = new ImageView(this);
 
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
@@ -156,41 +185,10 @@ public class ListActivity extends SimpleActivity {
             Picasso.with(this)
                     .load(url)
                     .into(imgView);
-        }
+
 
     }
 
-    //Method that takes in a url and programmatically exports the image given to a certain location within the random hike.
-
-    public void loadImage2(String url) {
-
-
-        if(url.isEmpty()) {
-            GridLayout grid = $(R.id.listForGrid);
-            grid.removeAllViews();
-            //Intent intent = new Intent(this, RandomHikeActivity.class);
-            //startActivity(intent);
-        } else {
-            ImageView imgView = new ImageView(this);
-
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-            );
-            params.height = 300;
-            params.width = 300;
-
-            imgView.setLayoutParams(params);
-            GridLayout grid = $(R.id.listForGrid);
-            grid.removeAllViews();
-            grid.addView(imgView);
-
-            Picasso.with(this)
-                    .load(url)
-                    .into(imgView);
-        }
-
-    }
 
 
 
