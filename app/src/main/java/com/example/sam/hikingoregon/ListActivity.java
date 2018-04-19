@@ -51,11 +51,11 @@ public class ListActivity extends SimpleActivity {
     public void generateList(View view) {
 
         //pulls data from textboxes
-        stars = (EditText) findViewById(R.id.ratingBox);
+        //stars = (EditText) findViewById(R.id.ratingBox);
         minLength = (EditText) findViewById((R.id.minLengthBox));
 
         //converts data in boxes to strings
-        textInStars = Integer.valueOf(stars.getText().toString());
+        //textInStars = Integer.valueOf(stars.getText().toString());
         inputLength = Integer.valueOf(minLength.getText().toString());
 
 
@@ -64,13 +64,13 @@ public class ListActivity extends SimpleActivity {
         //showToast(String.valueOf(inputLength));
         Ion.with(this)
                 //this url takes in method parameters, you can check the api for more details.
-                .load("https://www.hikingproject.com/data/get-trails?lat=44.9429&lon=-123.0351&maxDistance=40&minStars=" + textInStars + "&minLength=" + inputLength + "&maxResults=30&key=200232475-fb4ba0aa94a3bc700c5cb0b8eb6a9e6e")
+                .load("https://www.hikingproject.com/data/get-trails?lat=44.9429&lon=-123.0351&maxDistance=40&minLength=" + inputLength + "&maxResults=30&key=200232475-fb4ba0aa94a3bc700c5cb0b8eb6a9e6e")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
                         try {
-
+                            LinearLayout layout = (LinearLayout) findViewById(R.id.activityList);// where we add the dynamic layout
 
                             JSONObject json = new JSONObject(result); // retrieves the object from input
                             JSONArray trails = json.getJSONArray("trails"); // gets the array of trails
@@ -102,7 +102,8 @@ public class ListActivity extends SimpleActivity {
 
 
 
-                            LinearLayout layout = (LinearLayout) findViewById(R.id.activityList);// where we add the dynamic layout
+
+
                             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                                     ViewGroup.LayoutParams.WRAP_CONTENT,
                                     ViewGroup.LayoutParams.WRAP_CONTENT
@@ -114,6 +115,7 @@ public class ListActivity extends SimpleActivity {
                                 String hikeName = x.getString("name");
                                 String hikeLength = x.getString("length");
                                 String imagez = x.optString("imgSmall");
+
 
                                 String h = x.getString("high");
                                     String l = x.getString("low");
@@ -138,16 +140,17 @@ public class ListActivity extends SimpleActivity {
     }
 
     public void addList(String image, String hikeName, String hikeLength, String gains, LinearLayout layout) throws IOException {
+        if(image.isEmpty()){
+            image = "https://dummyimage.com/600x400/000/fff&text=No+Image+Exists";
+        }
+
+        View listLine = getLayoutInflater().inflate(R.layout.line, layout);
         View list = getLayoutInflater().inflate(R.layout.list, null);
 
         ImageView img = (ImageView) list.findViewById(R.id.listImage);
+
         URL url = new URL(image);
         Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-//        Picasso.with(context)
-//                .load(image)
-//                .resize(200, 200)
-//                .into(img);
-
 
         img.setImageBitmap(bmp);
 
