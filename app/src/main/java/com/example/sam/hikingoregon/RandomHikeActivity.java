@@ -1,6 +1,7 @@
 package com.example.sam.hikingoregon;
 
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,10 @@ public class RandomHikeActivity extends SimpleActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_random_hike);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
     }
 
     public void generateRandom(View view) {
@@ -35,7 +40,8 @@ public class RandomHikeActivity extends SimpleActivity {
 
         Ion.with(this)
                 //this url takes in method parameters, you can check the api for more details.
-                .load("https://www.hikingproject.com/data/get-trails?lat=44.9429&lon=-123.0351&maxDistance=40&maxResults=30&key=200232475-fb4ba0aa94a3bc700c5cb0b8eb6a9e6e")
+                //.load("https://www.hikingproject.com/data/get-trails?lat=45.5231&lon=-122.6795&maxDistance=50&maxResults=40&key=200232475-fb4ba0aa94a3bc700c5cb0b8eb6a9e6e")
+                .load("https://www.hikingproject.com/data/get-trails?lat=45.5231&lon=-122.6765&maxDistance=60&maxResults=100&key=200232475-fb4ba0aa94a3bc700c5cb0b8eb6a9e6e")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
@@ -43,7 +49,7 @@ public class RandomHikeActivity extends SimpleActivity {
                         try{
                            //Random number creation to grab a random item from the array
                            Random rand = new Random();
-                           int value = rand.nextInt(30);
+                           int value = rand.nextInt(5);
 
                            JSONObject json = new JSONObject(result); // retrieves the object from input
                            JSONArray trails = json.getJSONArray("trails"); // gets the array of trails

@@ -2,7 +2,9 @@
 <ScrollView
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:fillViewport="true">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -41,31 +43,37 @@
         android:layout_height="2dp"
         android:background="@color/colorPrimary"
         android:paddingTop="35dp"
-        android:paddingBottom="15dp"/>
+        android:paddingBottom="45dp"/>
 
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_height="5dp"
+        android:paddingTop="35dp"
+        android:paddingBottom="45dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|top"
-            android:padding="10dp"
-            android:text="Minimum Length:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="30sp" />
+    <!-- <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:gravity="center">
 
-            <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1"
-            android:padding="3dp"
-            android:id="@+id/minLengthBox"
-            android:layout_weight="5"/>
-    </LinearLayout>
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center|top"
+             android:padding="10dp"
+             android:text="Minimum Length:"
+             android:textColor="@color/colorPrimaryDark"
+             android:textSize="30sp" />
+
+             <EditText
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="1"
+             android:padding="3dp"
+             android:id="@+id/minLengthBox"
+             android:layout_weight="5"/>
+     </LinearLayout>-->
 
 
 
@@ -82,7 +90,7 @@
 
 
 
-<LinearLayout
+<!--<LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -91,14 +99,14 @@
         android:layout_width="wrap_content"
         android:id="@+id/gridList"
         android:layout_height="wrap_content"
-        android:layout_gravity="left">
+        android:layout_gravity="center">
     </GridLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_gravity="left"
+        android:layout_gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="50dp">
 
@@ -108,14 +116,14 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
-        android:layout_gravity="left"
+        android:layout_gravity="center"
         android:layout_marginBottom="15dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="left"
+            android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="15dp">
 
@@ -135,14 +143,14 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp"
                 android:text=" Miles"
-                android:layout_gravity="left" />
+                android:layout_gravity="center" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="left"
+            android:layout_gravity="center"
             android:layout_marginLeft="10dp">
 
             <TextView
@@ -177,7 +185,7 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</LinearLayout>-->
 
 </LinearLayout>
 </ScrollView>
