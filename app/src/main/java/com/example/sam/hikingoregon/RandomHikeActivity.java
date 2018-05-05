@@ -49,7 +49,7 @@ public class RandomHikeActivity extends SimpleActivity {
                         try{
                            //Random number creation to grab a random item from the array
                            Random rand = new Random();
-                           int value = rand.nextInt(5);
+                           int value = rand.nextInt(50);
 
                            JSONObject json = new JSONObject(result); // retrieves the object from input
                            JSONArray trails = json.getJSONArray("trails"); // gets the array of trails

@@ -1,18 +1,11 @@
 package com.example.sam.hikingoregon;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.StrictMode;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,37 +20,27 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Random;
-
 
 import stanford.androidlib.SimpleActivity;
 
-public class SearchActivity extends SimpleActivity {
-
-    String inputStuff;
+public class searchTwo extends SimpleActivity {
 
     EditText input;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_search_two);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-
     }
 
     public void generateSearch(View view) {
 
-
         input = (EditText) findViewById((R.id.input));
-        String test = input.toString();
-        showToast(test);
+        final String test  = input.getText().toString().toLowerCase();
+        //showToast(test);
         Ion.with(this)
                 .load("https://www.hikingproject.com/data/get-trails?lat=45.5231&lon=-122.6765&sort=quality&maxDistance=60&maxResults=100&key=200232475-fb4ba0aa94a3bc700c5cb0b8eb6a9e6e")
                 .asString()
@@ -75,9 +58,12 @@ public class SearchActivity extends SimpleActivity {
 
                             for(int i = 0; i < 90 -1 ;i++){
                                 JSONObject x = trails.getJSONObject(i);
-                                String hikeNameCheck = x.getString("name");
+                                String hikeNameCheck = x.getString("name").toLowerCase();
+                                String subHike = hikeNameCheck.substring(0, test.length());
+                                //showToast("subhike = " + subHike);
+
                                 //indexOf
-                                if(hikeNameCheck.equals(input)) {
+                                if(hikeNameCheck.contains(test)) {
 
 
                                     String hikeName = x.getString("name");
@@ -105,8 +91,9 @@ public class SearchActivity extends SimpleActivity {
                         }
                     }
                 });
-
     }
+
+
 
     public void addListItem(String image, String hikeName, String hikeLength, String gains, LinearLayout layout) throws IOException {
 
@@ -149,8 +136,6 @@ public class SearchActivity extends SimpleActivity {
 
 
     private void showToast(String text){
-        Toast.makeText(SearchActivity.this, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(searchTwo.this, text, Toast.LENGTH_SHORT).show();
     }
-
-
 }

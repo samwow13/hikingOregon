@@ -43,10 +43,6 @@ public class MainActivity extends SimpleActivity {
         startActivity(intent);
     }
 
-    public void goToSearch(View view) {
-        Intent intent = new Intent(this, SearchActivity.class);
-        startActivity(intent);
-    }
 
 //    public void goToRandomHike(View view) {
 //        Intent intent = new Intent(this, RandomHikeActivity.class);
@@ -81,5 +77,10 @@ public class MainActivity extends SimpleActivity {
         Intent intent = new Intent(this, RandomHikeActivity.class);
         startActivity(intent);
 
+    }
+
+    public void goToSearchTwo(View view) {
+        Intent intent = new Intent(this, searchTwo.class);
+        startActivity(intent);
     }
 }

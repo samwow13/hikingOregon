@@ -33,6 +33,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
 
+
 import stanford.androidlib.SimpleActivity;
 
 public class ListActivity extends SimpleActivity {
@@ -88,31 +89,9 @@ public class ListActivity extends SimpleActivity {
 
                             JSONObject one = trails.getJSONObject(0);// gets the object at value of trail array
 
-                            //returns data for each of the following
-
-                            //String name = one.getString("name");
-                            //String length = one.getString("length");
-
-                            //String highElevation = one.getString("high");
-                            //String lowElevation = one.getString("low");
-                            //int high = Integer.parseInt(highElevation);
-                            //int low = Integer.parseInt(lowElevation);
-                            //int elevationGain = high - low;
-                            //String gain = Integer.toString(elevationGain);
-
-                            //String image = one.optString("imgSmall");// gets the image
-                            //if(image.isEmpty()){
-                                //image = "https://dummyimage.com/600x400/000/fff&text=No+Image+Exists";
-                            //}
-                            //loadImage(image);
-
-                            //sets textviews to proper inputs
-                           // $TV(R.id.hikeListName).setText(name);
-                           // $TV(R.id.hikeListLength).setText(length);
-                            //$TV(R.id.hikeHighElevation).setText(gain);
 
 
-                            for(int i = 0; i < 40 -1 ;i++){
+                            for(int i = 0; i < 90 -1 ;i++){
                                 JSONObject x = trails.getJSONObject(i);
                                 String hikeName = x.getString("name");
                                 String hikeLength = x.getString("length");
@@ -151,17 +130,13 @@ public class ListActivity extends SimpleActivity {
             View list = getLayoutInflater().inflate(R.layout.list, null);
 
             ImageView img = (ImageView) list.findViewById(R.id.listImage);
+            loadImage(image, img);
 
 
-            Bitmap bmp = getBitmapFromURL(image);
-            img.setImageBitmap(bmp);
 
-
-            // URL url = new URL(image);
-            //Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            //Bitmap bmp = getBitmapFromURL(image);
 
             //img.setImageBitmap(bmp);
-
 
             TextView tvHikeName = (TextView) list.findViewById(R.id.listHikeName);
             tvHikeName.setText(hikeName);
@@ -177,7 +152,7 @@ public class ListActivity extends SimpleActivity {
     }
 
 
-    public  Bitmap getBitmapFromURL(String src) {
+    public static Bitmap getBitmapFromURL(String src) {
         try {
 
             URL url = new URL(src);
@@ -186,6 +161,7 @@ public class ListActivity extends SimpleActivity {
             connection.connect();
             InputStream input = connection.getInputStream();
             Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            input.close();
             return myBitmap;
         } catch (IOException e) {
             // Log exception
@@ -193,29 +169,14 @@ public class ListActivity extends SimpleActivity {
         }
     }
 
+
     /*
     Method that takes in a url and programmatically exports the image given to a certain location within the random hike.
      */
-    public void loadImage(String url) {
-            ImageView imgView = new ImageView(this);
-
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-            );
-            params.height = 300;
-            params.width = 300;
-
-            imgView.setLayoutParams(params);
-            //GridLayout grid = $(R.id.gridList);
-            //grid.removeAllViews();
-            //grid.addView(imgView);
-
+    public void loadImage(String url, ImageView imgView) {
             Picasso.with(this)
                     .load(url)
                     .into(imgView);
-
-
     }
 
 

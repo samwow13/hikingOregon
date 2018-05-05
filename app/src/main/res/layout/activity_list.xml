@@ -26,7 +26,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary"
+        android:paddingBottom="20dp"/>
 
     <TextView
         android:id="@+id/textView3"

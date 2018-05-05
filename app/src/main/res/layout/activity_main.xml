@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:text="Search"
             android:layout_marginRight="3dp"
-            android:onClick="goToSearch"
+            android:onClick="goToSearchTwo"
             android:layout_weight="1"
             android:background="@color/colorPrimary"/>
 
